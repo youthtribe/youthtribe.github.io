@@ -1,0 +1,41 @@
+<div class="container-fluid">
+	<div class="margin-top-10 text-center">
+		<div class="alert alert-danger" ng-show="errorMessage">{{errorMessage}}</div>
+		<div class="row mobile-row">
+			<div class="col-xs-12">
+				<h2>YouthTribe</h2>
+			</div>
+		</div>
+		<div class="row mobile-row">
+			<div class="col-xs-12">
+				<h4>Email:</h4>
+			</div>
+		</div>
+		<div class="row mobile-row">
+			<div class="col-xs-12">
+				<input class="form-control" type="email" ng-model="loginData.email">
+			</div>
+		</div>
+		<div class="row mobile-row">
+			<div class="col-xs-12">
+				<h4>Password:</h4>
+			</div>
+		</div>
+		<div class="row mobile-row" style="margin-bottom:20px">
+			<div class="col-xs-12">
+				<input class="form-control" type="password" ng-model="loginData.password">
+			</div>
+		</div>
+		<div class="row mobile-row" style="margin-bottom:10px">
+			<div class="col-xs-12">
+				<input type="button" class="btn btn-primary" ng-click="loginFunction()" value="Login">
+			</div>
+		</div>
+		<div class="row mobile-row">
+			<div class="col-xs-12">No account? <a ng-click="register()">Register now!</a>
+			</div>
+		</div>
+	  	<br/><br/>
+	  	
+	</div>
+</div>

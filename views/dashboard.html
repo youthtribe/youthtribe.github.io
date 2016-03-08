@@ -1,0 +1,152 @@
+<div class="container-fluid bg-color">
+    <div class="margin-left-20">
+      <h2>{{profile.username}}'s progress</h2>
+    </div>
+    <!--Display when in range of current season -->
+    <div class="row mobile-row" ng-show="dashboard.inDateRange">
+        <div class="col-xs-12">
+          <div class="panel panel-default">
+            <div class="panel-body background-white">
+              <div class="row">
+                <div class="col-xs-6 text-right">
+                  <strong>Finish Line:</strong>
+                </div>
+                <div class="col-xs-6 text-left">
+                  {{dashboard.endDate}}
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 text-right">
+                <strong>Days Left:</strong>
+              </div>
+                <div class="col-xs-6 text-left">
+                  {{dashboard.daysRemaining}}
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Display when not in current season -->
+      <div class="row mobile-row" ng-show="!dashboard.inDateRange">
+        <div class="col-xs-12">
+          <div class="alert alert-info" >
+            <p>Results for {{dashboard.startDate}} - {{dashboard.endDate}}</p>
+            <p>Youth Tri Tracking will restart next season!</p>
+          </div>
+        </div>
+      </div>
+      <!-- Triathalon Workout Panel -->
+      <div class="row mobile-row">
+        <div class="col-xs-12">
+          <div class="panel panel-default">
+            <div class="panel-body background-white">
+              <h4 class="text-center header-top">Triathlon Progress</h4>
+              <div class="row">
+                <div class="col-md-1 col-xs-2 text-center">
+                  <img src="img/triathlon.png" alt="Run" height="40" width="40">
+                </div>
+                <div class="col-xs-10">
+                  <div class="progress bg-swim" style="height:40px; margin-left: 15px" >
+                    <div class="progress-bar youthTribe-bgbluesortof" role="progressbar" aria-valuenow="40"
+                    aria-valuemin="0" aria-valuemax="100" style="width:{{(100 * ((dashboard.swimCompleted / dashboard.swimGoal) > 1 ? 1 : (dashboard.swimCompleted / dashboard.swimGoal)) / 3) + (100 * ((dashboard.bikeCompleted / dashboard.bikeGoal) > 1 ? 1 : (dashboard.bikeCompleted / dashboard.bikeGoal)) / 3) + (100 * ((dashboard.runCompleted / dashboard.runGoal) > 1 ? 1 : (dashboard.runCompleted / dashboard.runGoal)) / 3)}}%">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--individual Goal Progress-->
+      <div class="row mobile-row">
+        <div class="col-xs-12">
+          <div class="panel panel-default">
+            <div class="panel-body background-white">
+              <h4 class="text-center header-top"> Goal Progress</h4>
+             <div class="row">
+             <div class="col-md-1 col-xs-2 text-center">
+              <img src="img/swimmer.png" alt="Run" height="40" width="40">
+             </div>
+              <div class="col-xs-10">
+                <div class="progress bg-swim" style="height:40px; margin-left: 15px">
+                  <div class="progress-bar youthTribe-bgteal" role="progressbar" aria-valuenow="40"
+                  aria-valuemin="0" aria-valuemax="100" style="width:{{100 * dashboard.swimCompleted / dashboard.swimGoal}}%">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+             <div class="col-md-1 col-xs-2 text-center">
+              <img src="img/biker.png" alt="Run" height="40" width="40">
+             </div>
+              <div class="col-xs-10">
+                <div class="progress bg-bike" style="height:40px; margin-left: 15px">
+                  <div class="progress-bar youthTribe-bgyellow" role="progressbar" aria-valuenow="40"
+                  aria-valuemin="0" aria-valuemax="100" style="width:{{100 * dashboard.bikeCompleted / dashboard.bikeGoal}}%">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+               <div class="col-md-1 col-xs-2 text-center">
+                <img src="img/runner.png" alt="Run" height="40" width="40">
+               </div>
+                <div class="col-xs-10">
+                  <div class="progress bg-run" style="height:40px; margin-left: 15px">
+                    <div class="progress-bar youthTribe-bgred" role="progressbar" aria-valuenow="40"
+                    aria-valuemin="0" aria-valuemax="100" style="width:{{100 * dashboard.runCompleted / dashboard.runGoal}}%">
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+       <div class="row mobile-row">
+        <div class="col-xs-12">
+          <div class="panel panel-default">
+            <div class="panel-body background-white">
+              <h4 class="text-center header-top">Individual Workouts</h4>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="font-bold">
+                    <th><h5></h5></th>
+                    <th><h5>Date</h5></th>
+                    <th><h5>Distance</h5></th>
+                  </thead>
+                  <tbody>
+                    <tr ng-hide="hasActivities">
+                      <td colspan="3">
+                        No activities... yet! <a ng-click="navActivity()">How about adding one?</a>
+                      </td>
+                    </tr>
+                    <tr ng-repeat="activityItem in dashboard.activities" class="bg-{{activityItem.type}}">
+                      <td>
+                        <img ng-show="activityItem.type == 'swim'" class="tiny-image" ng-src="img/swimmer.png" />
+                        <img ng-show="activityItem.type == 'bike'" class="tiny-image" ng-src="img/biker.png" />
+                        <img ng-show="activityItem.type == 'run'" class="tiny-image" ng-src="img/runner.png" />
+                      </td>
+                      <td ng-init="haveActivities()">{{activityItem.date}}</td>
+                      <td>
+                        {{activityItem.length | number}}
+                        <span ng-show="activityItem.type == 'swim'">meters</span>
+                        <span ng-hide="activityItem.type == 'swim'">miles</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="row mobile-row">
+          <div class="col-xs-12 text-center">
+            <strong> Add Workout </strong><br />
+           <a ng-click="navActivity()" ng-show="dashboard.inDateRange"><i class="fa fa-plus-circle fa-3x"></i></a>
+           <a href="#" ng-show="!dashboard.inDateRange"><i style="color: gray" class="fa fa-plus-circle fa-3x"></i></a>
+          </div>
+        </div>
+    </div>

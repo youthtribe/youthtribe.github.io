@@ -1,0 +1,21 @@
+<div class="text-center panel panel-default container-fluid">
+  <h1 class="heading">Rewards</h1>
+  <div class="perk" ng-repeat="reward in rewards">
+      <div class="panel panel-default">
+        <div class="panel-body background-white">
+          <h1>{{reward.title}}</h1>
+          <img ng-src="img/{{reward.image}}" class="perk-picture"/>
+          <p>{{reward.description}}</p>
+          <div ng-if="reward.manual">
+            <input type="button" class="btn btn-primary" ng-click="showManualRewardForm(reward)" value="Add an Event">
+            <div class="manual-reward-form manual-reward-form-{{reward.uniqueKey}} hidden" style="margin-top:10px;">
+              Name of Event: <input type="text" ng-model="manualReward.eventName" style="width:100%;">
+              Date of Event: <input type="date" class="form-control profiles-input" ng-model="manualReward.dateAwarded" placeholder="MM/DD/YYYY" maxlength="10" style="margin-bottom:20px;">
+              <input type="button" class="btn btn-success" ng-click="addManualReward(reward, manualReward)" value="Add">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

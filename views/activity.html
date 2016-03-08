@@ -1,0 +1,42 @@
+<div class="panel panel-default container-fluid">
+  <div class="panel panel-default margin-top-10">
+    <div class="panel-body background-white">
+      <h1 class="heading">New Activity</h1>
+      <form ng-submit="addActivity()">
+        <div class="form-group">
+          <label for="activityType">Type: </label>
+          <select ng-model="activity.type" required class="form-control margin-top-10" id="activityType">
+            <option value="swim">Swim</option>
+            <option value="bike">Bike</option>
+            <option value="run">Run</option>
+          </select>
+        </div>
+        <label for="activityLength"><strong>Time (min) or Distance (<span ng-show="activity.type=='swim'">meters</span><span ng-hide="activity.type=='swim'">miles</span></strong>): </label>
+        <div class="input-group margin-top-10">
+          <input ng-model="activity.length" step="any" required type="number" class="form-control" id="activityLength" />
+          <span class="input-group-btn">
+             <input id="lengthOrDistance" type="checkbox" checked data-toggle="toggle" />
+          </span>
+        </div>
+
+        <div class="form-group margin-top-10">
+          <label for="activityDate">Date: </label>
+          <input ng-model="activity.date" required type="date" class="form-control margin-top-10" id="activityDate" />
+          <!-- Datepicker -->
+        </div>
+        <div class="text-center">
+          <input type="submit" class="btn btn-teal" value="Submit" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  $(function() {
+    $('#lengthOrDistance').bootstrapToggle({
+      on: 'Time',
+      off: 'Distance',
+      onstyle: 'teal'
+    });
+  })
+</script>

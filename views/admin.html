@@ -1,0 +1,28 @@
+<h1>Modify the viewData object</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Age</th>
+			<th>Swim Goal (Meters)</th>
+			<th>Swim Conversion (10 minutes)</th>
+			<th>Bike Goal (Miles)</th>
+			<th>Bike Conversion (mph)</th>
+			<th>Run Goal (Miles)</th>
+			<th>Run Conversion (1 mile)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="goal in viewDataForm.goals track by goal.id">
+			<td><input type="text" ng-model="goal.age">input</td>
+			<td><input type="text" ng-model="goal.swim.goal">input</td>
+			<td><input type="text" ng-model="goal.swim.conversion">input</td>
+			<td><input type="text" ng-model="goal.bike.goal">input</td>
+			<td><input type="text" ng-model="goal.bike.conversion">input</td>
+			<td><input type="text" ng-model="goal.run.goal">input</td>
+			<td><input type="text" ng-model="goal.run.conversion">input</td>
+		</tr>
+	</tbody>
+</table>
+<button ng-click="submit()">Submit</button>
+CODE:
+{{viewDataForm}}

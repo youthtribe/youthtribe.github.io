@@ -1,0 +1,45 @@
+<div class="panel panel-default container-fluid">
+  <div class="container">
+    <h3 class="text-center">Register</h3>
+    <form>
+        <div class="alert alert-danger" ng-show="errorMessage">{{errorMessage}}</div>
+        <div class="form-group">
+            <label class="control-label" for="inputEmail">Email:</label>
+            <input class="form-control" type='email' ng-model="registerData.email" id="inputEmail">
+            <div class="help-block">Please enter a valid email</div>
+        </div>
+        <div class="form-group password">
+            <label class="control-label" for="inputPassword">Password:</label>
+            <input class="form-control" type='password' ng-model="registerData.password" id="inputEmail">
+            <div class="help-block">Please enter a valid Password</div>
+        </div>
+        <div class="form-group password">
+            <label class="control-label" for="inputConfirmPassword">Confirm Password:</label>
+            <input class="form-control" id="inputConfirmPassword" type='password' ng-model="registerData.confirmPassword">
+            <div class="help-block">Please enter a valid Confirm Password</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputFirstName">First Name:</label>
+            <input class="form-control" id="inputFirstName" type='text' ng-model="registerData.firstName">
+            <div class="help-block">Please enter a valid First Name</div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputLastName">Last Name:</label>
+            <input class="form-control" id="inputLastName" type='text' ng-model="registerData.lastName">
+            <div class="help-block">Please enter a valid Last Name</div>
+        </div>
+        <div>
+            <label class="checkbox-inline">
+                <input type="checkbox" id="liabilityCheckBox" ng-model"registerData.liabilityCheck">
+                <span class="checkbox-text">
+                    I have read and agree to the
+                </span>
+            </label>
+            <a href="#" ng-click="navLegal();"> Legal Information.</a>
+        </div>
+        <div class="text-center">
+        	<input type="button" class="btn btn-info" value="Register" ng-click="register()" style="margin:15px 0">
+        </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="container">
+    <h2 class="text-center">Profile Selection</h2>
+    <div ng-repeat="child in children" ng-hide="addChild">
+        <div class="panel panel-default text-center" >
+          <div class="panel-body background-white" ng-click="chooseChild(child)">
+          <h3>{{child.username}}</h3>
+            <img ng-show="child.avatar == 1" id="avatar-1" src="img/girl1.svg" class="avatar-selection" />
+            <img ng-show="child.avatar == 2" id="avatar-2" src="img/girl2.svg" class="avatar-selection" />
+            <img ng-show="child.avatar == 3" id="avatar-3" src="img/boy1.svg" class="avatar-selection" />
+            <img ng-show="child.avatar == 4" id="avatar-4" src="img/boy2.svg" class="avatar-selection" />
+          </div>
+      </div>
+    </div>
+    <div id="newChildForm" class="newChildClass" ng-show="addChild">
+        <div class="form-group">
+            <label class="control-label">Username:</label>
+            <input type="text" class="form-control profiles-input" ng-model="newChild.username" onkeyup="this.value=this.value.replace(/[^a-z0-9]/ig,'');" maxlength="64">
+        </div>
+        <div class="form-group">
+            <label class="control-label">Date of Birth:</label>
+             <input type="date" class="form-control profiles-input" ng-model="newChild.dateOfBirth" placeholder="MM/DD/YYYY" maxlength="10">
+          </div>
+        <div class="form-group">
+          <label class="control-label">Bio:</label>
+           <input type="textarea" class="form-control profiles-input" ng-model="newChild.bio" maxlength="140">
+        </div>
+        <div style="margin-bottom:20px">
+                <label class="radio-inline">
+                 <input type="radio" class="profiles-input" name="gender" ng-model="newChild.gender" value="male"> Male
+                </label>
+                <label class="radio-inline">
+                 <input type="radio" class="profiles-input" name="gender" ng-model="newChild.gender" value="female">Female
+                 </label>
+
+            <br /> <br />
+
+        </div>
+        <div class="form-group">
+          <label class="control-label">Zip:</label>
+         <input type="text" class="form-control profiles-input" ng-model="newChild.zip" onkeyup="this.value=this.value.replace(/[^0-9]{5}/ig,'');" maxlength="5">
+        </div>
+        <div class="form-group">
+          <label class="control-label">School: </label>
+        <input type="text" class="form-control profiles-input" ng-model="newChild.school" onkeyup="this.value=this.value.replace(/[^a-z0-9\s]/ig,'');" maxlength="64">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Avatar:</label>
+        </div>
+        <div class="avatar-image-wrapper">
+          <a href="#" ng-click="imageCheckboxHandler(1);"><img id="avatar-1" src="img/girl1.svg" class="avatar-selection" /></a>
+          <a href="#" ng-click="imageCheckboxHandler(2);"><img id="avatar-2" src="img/girl2.svg" class="avatar-selection" /></a>
+          <a href="#" ng-click="imageCheckboxHandler(3);"><img id="avatar-3" src="img/boy1.svg" class="avatar-selection" /></a>
+          <a href="#" ng-click="imageCheckboxHandler(4);"><img id="avatar-4" src="img/boy2.svg" class="avatar-selection" /></a>
+          <div class="checkboxes" hidden>
+            <input type="text" class="avatar-input" ng-model="newChild.avatar">
+          </div>
+        </div>
+
+        <input type="button" class="btn btn-primary" value="Create" ng-click="createChild();" style="margin-bottom:20px">
+        <input type="button" class="btn btn-danger" value="Cancel" ng-click="addChild = !addChild" style="margin-bottom:20px">
+    </div>
+    <div class="text-center">
+        <input ng-show="!addChild" type="button" class="btn btn-info" value="Add Child" ng-click="addChild = !addChild">
+    </div>
+  </div>
+</div>

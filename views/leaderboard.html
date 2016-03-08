@@ -1,0 +1,104 @@
+<div class="container-fluid">
+  <div class="container">
+    <h2>Swimming Leaderboard</h2>
+    <table class="table table-bordered table-stripe">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Swim Distance (m)</th>   
+          <th>Age Group</th>       
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="swimmer in swim | orderBy:'-swim'">
+          <td ng-show="swimmer.swim > 0">{{swimmer.username}}</td>
+          <td ng-show="swimmer.swim > 0">{{swimmer.swim | number}}</td>
+          <td ng-show="swimmer.swim > 0">{{swimmer.ageGroup}}</td>
+        </tr>
+        <tr>
+          <td>{{myProfile.username}}</td>
+          <td>{{myProfile.swim | number}}</td>
+          <td>{{myProfile.ageGroup}}</td>       
+        </tr>
+      </tbody>
+    </table>
+    <h2>Biking Leaderboard</h2>
+    <table class="table table-bordered table-stripe">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Bike Distance (mi)</th>
+          <th>Age Group</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="biker in bike | orderBy: '-bike'">
+          <td ng-show="biker.bike > 0">{{biker.username}}</td>
+          <td ng-show="biker.bike > 0">{{biker.bike | number}}</td>
+          <td ng-show="biker.bike > 0">{{biker.ageGroup}}</td>
+        </tr>
+        <tr>
+          <td>{{myProfile.username}}</td>
+          <td>{{myProfile.bike | number}}</td>
+          <td>{{myProfile.ageGroup}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Running Leaderboard</h2>
+    <table class="table table-bordered table-stripe">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Run Distance (mi)</th>    
+          <th>Age Group</th>      
+        </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="runner in run | orderBy: '-run'">
+          <td ng-show="runner.run > 0">{{runner.username}}</td>
+          <td ng-show="runner.run > 0">{{runner.run | number}}</td>
+          <td ng-show="runner.run > 0">{{runner.ageGroup}}</td>
+        </tr>
+        <tr>
+          <td>{{myProfile.username}}</td>
+          <td>{{myProfile.run | number}}</td>
+          <td>{{myProfile.ageGroup}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="form-group">
+      <label for="ageGroupSelect">Age Group</label>
+      <select id="ageGroupSelect" ng-model="ageGroupChosen" ng-options="group for group in allAgeGroups"></select>
+    </div>
+    <h2>Leaderboard {{ageGroupChosen}}</h2>
+    <table class="table table-bordered table-striped" ng-show="ageGroupChosen">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>
+            <a href="#" ng-click="sortType = 'swim'">
+            Swim Distance (m)<span ng-show="sortType == 'swim'" class="fa fa-caret-down"></span>
+          </a>
+          </th>
+          <th><a href="#" ng-click="sortType = 'bike'">
+            Bike Distance (mi)<span ng-show="sortType == 'bike'" class="fa fa-caret-down"></span>
+          </a>
+          </th>
+          <th>
+            <a href="#" ng-click="sortType = 'run'">
+            Run Distance (mi)<span ng-show="sortType == 'run'" class="fa fa-caret-down"></span>
+          </a>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+    <tr ng-repeat="child in children | orderBy:sortType:true | filter:{ageGroup:ageGroupChosen}:child.ageGroup">    
+      <td>{{child.username}}</td>
+      <td>{{child.swim | number}}</td>
+      <td>{{child.bike | number}}</td>
+      <td>{{child.run | number}}</td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+</div>

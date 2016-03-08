@@ -3,7 +3,7 @@
 ### This is a PRODUCTION REPOSITORY
 This is entire repo is hosted at https://youthtribe.github.io 
 
-### Consume
+### Get the Mobile App
 * For iPhone, open Safari. For Android open Chrome
 * Go to www.theyouthtribe.org and click on "Menu" then "The App" tab.
 * Click on the link "Youth Tri Tracker application"

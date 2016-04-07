@@ -46,7 +46,7 @@
     <script src="js/leaderboardController.js"></script>
      <script src="js/routes.js"></script>
   </head>
-  <body ng-app="youthTribe">
+  <body ng-app="youthTribe" ng-cloak>
     <ul ng-hide="(['register', 'profiles', 'login']).indexOf($state.current.name) > -1" class="nav nav-tabs navbar navbar-default navbar-fixed-top" style="background-color:white; margin-bottom:15px">
       <li role="presentation"><img src="img/youth_tribe_logo.png" alt="Run" height="40"></li>
       <li role="presentation"><a href="#/dashboard/{{$stateParams.id}}"><span class="nav-top-links"><i class="fa fa-home fa-2x"></i></span></a></li>
